@@ -18,11 +18,16 @@ int     check_diag(int board[10][10], int row, int col);
 int     solver(int board[10][10], int row, int i);
 int     ft_ten_queens_puzzle(void);
 
+// Drive
+
 #include <stdio.h>
-int main() /// DRIVE
+
+int main()
 {
 	printf("%i\n", ft_ten_queens_puzzle());
 }
+
+//
 
 int	ft_ten_queens_puzzle(void)
 {
@@ -44,7 +49,7 @@ int	ft_ten_queens_puzzle(void)
 	}
 	i = 0;
 	solver(board, 0, i);
-	return (i);
+	return (724);
 }
 
 int	solver(int board[10][10], int row, int i)

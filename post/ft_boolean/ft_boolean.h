@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   ft_boolean.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -19,7 +19,9 @@
 # define    EVEN(n)     n % 2 == 0
 # define    EVEN_MSG    "I have an even number of arguments.\n"
 # define    ODD_MSG     "I have an odd number of arguments.\n"
-# include   <unistd.h>
+
 typedef     int t_bool;
+
+# include   <unistd.h>
 
 #endif
