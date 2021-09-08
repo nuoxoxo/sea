@@ -27,12 +27,9 @@ int     main(int argc, char **argv)
     (void)argc;
     int i = 0;
     char **grid = ft_split(argv[1]);
-    
+
     while (grid[i])
-    {
-        printf("%s \n", grid[i]);
-        i++;
-    }
+        printf("%s \n", grid[i++]);
     return (0);
 }
 
