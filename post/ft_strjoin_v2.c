@@ -74,7 +74,6 @@ int count_res_size(int size, char **strs, char *sep)
     }
     size_grid += (size_sep * (size - 1) + 1);
 
-    //printf("%i\n", size_grid);
     return size_grid;
 }
 
