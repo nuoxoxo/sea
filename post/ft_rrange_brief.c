@@ -15,7 +15,9 @@
 int     *ft_rrange(int start, int end);
 
 // DRIVE
+
 #include <stdio.h>
+
 int     main(void)
 {
     int s = 0;
@@ -31,6 +33,8 @@ int     main(void)
         while (i <= s - e)  printf("%i ", p[i++]);
     }
 }
+
+//
 
 int     *ft_rrange(int start, int end)
 {
