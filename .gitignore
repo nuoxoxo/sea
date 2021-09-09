@@ -4,3 +4,5 @@ Thumbs.db
 *.swp
 *.pdf
 *.txt
+**/includes/
+**/srcs/
