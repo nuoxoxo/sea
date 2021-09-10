@@ -1,44 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_foreach.c                                       :+:      :+:    :+:   */
+/*   ft_count_if.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 10:46:48 by nuxu              #+#    #+#             */
-/*   Uput_one_positive_digit_and_breakated: 2021/08/12 11:43:02 by nuxu             ###   ########.fr       */
+/*   Updated: 2021/08/12 11:43:02 by nuxu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void    ft_foreach(int *tab, int length, void(*f)(int))
+int     ft_count_if(char **tab, int(*f)(char *))
 {
-        int     i;
-
-        i = 0;
-        while (i < length)
+        int     counter = 0;
+        int     i = 0;
+        while   (tab[i])
         {
-                f(tab[i]);
+                if (f(tab[i]) == 1)
+                {
+                        counter++;
+                }
                 i++;
         }
+        return (counter);
 }
 
 /*
 
-#include <unistd.h>
-
-void    put_one_positive_digit_and_break(int n)
-{
-        char    c;
-        if (n < 10 && n >= 0)
-        c = n % 10 + '0';write(1, &c, 1);write(1, "\n", 1);
-}
-
 // DRIVE
 
-int     main()
+#include <stdio.h>
+
+int     is_len_seven(char *s)
 {
-        int     arr[] = {0, 9, 2, 7, 4, 6, 3, 5, 1, 8};
-        ft_foreach(arr, 10, &put_one_positive_digit_and_break);
+        int     i = 0;
+        if (!s) return 0;
+        while (s[i])    i++;
+        if (i == 7)     return 1;
+        return 0;
+}
+
+int     main(int argc, char **argv)
+{
+        (void)  argc;
+        printf("%i\n", ft_count_if(argv, &is_len_seven));
 }
 
 */

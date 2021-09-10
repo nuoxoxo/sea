@@ -6,9 +6,25 @@
 /*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 10:46:48 by nuxu              #+#    #+#             */
-/*   Uput_one_positive_digit_and_breakated: 2021/08/12 11:43:02 by nuxu             ###   ########.fr       */
+/*   Updated: 2021/08/12 11:43:02 by nuxu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <unistd.h>
+
+void    ft_foreach(int *tab, int length, void(*f)(int));
+void    pnbr(int n);
+void    pn(int n);
+
+// DRIVE
+
+int     main()
+{
+        int     arr[] = {0, -64, 512, -1024, 2147483647, -2147483648};
+        ft_foreach(arr, 6, &pnbr);
+}
+
+//
 
 void    ft_foreach(int *tab, int length, void(*f)(int))
 {
@@ -22,23 +38,32 @@ void    ft_foreach(int *tab, int length, void(*f)(int))
         }
 }
 
-/*
-
-#include <unistd.h>
-
-void    put_one_positive_digit_and_break(int n)
+void    pn(int num)
 {
+        long    n;
         char    c;
-        if (n < 10 && n >= 0)
-        c = n % 10 + '0';write(1, &c, 1);write(1, "\n", 1);
+
+        n = num;
+        if      (n < 0)
+        {
+                n *= -1;
+                write(1, "-", 1);
+        }
+        if      (n < 10 && n >= 0)
+        {
+                c = n + '0';
+                write(1, &c, 1);
+        }
+        else
+        {
+                pn(n / 10);
+                c = n % 10 + '0';
+                write(1, &c, 1);
+        }
 }
 
-// DRIVE
-
-int     main()
+void    pnbr(int n)
 {
-        int     arr[] = {0, 9, 2, 7, 4, 6, 3, 5, 1, 8};
-        ft_foreach(arr, 10, &put_one_positive_digit_and_break);
+        pn(n);
+        write(1, "\n", 1);
 }
-
-*/

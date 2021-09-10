@@ -10,21 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void    ft_foreach(int *tab, int length, void(*f)(int))
-{
-        int     i;
-
-        i = 0;
-        while (i < length)
-        {
-                f(tab[i]);
-                i++;
-        }
-}
-
-/*
-
 #include <unistd.h>
+
+void    ft_foreach(int *tab, int length, void(*f)(int));
 
 void    put_one_positive_digit_and_break(int n)
 {
@@ -41,4 +29,16 @@ int     main()
         ft_foreach(arr, 10, &put_one_positive_digit_and_break);
 }
 
-*/
+//
+
+void    ft_foreach(int *tab, int length, void(*f)(int))
+{
+        int     i;
+
+        i = 0;
+        while (i < length)
+        {
+                f(tab[i]);
+                i++;
+        }
+}
