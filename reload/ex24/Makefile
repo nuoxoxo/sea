@@ -13,17 +13,14 @@ RM	:=	rm -f
 # Above : macros
 # Below : targets
 
-all	:	${NAME}
-%.o	:	%.c
-			${CC} ${CFLAGS} -c $< -o ${<:c=o}
 ${NAME}	:	${OBJS}	
-			ar rc	${NAME} ${OBJS}
+		ar rc	${NAME} ${OBJS}
+%.o	:	%.c
+		${CC} ${CFLAGS} -c $< -o ${<:c=o}
+all	:	${NAME}
 clean	:	
-			${RM} ${OBJS}
+		${RM} ${OBJS}
 fclean	:	clean
-			${RM} ${NAME}
+		${RM} ${NAME}
 re	:	fclean all
 .PHONY	:	all clean fclean re
-
-# -I adds include directory of header files.
-# $< used in the "recipe" means "the first prerequisite" ie the 1st thing after the : in the line above.
