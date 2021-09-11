@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_foreach.c                                       :+:      :+:    :+:   */
+/*   ft_any.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,35 +10,37 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void    ft_foreach(int *tab, int length, void(*f)(int))
+int     ft_any(char **tab, int(*f)(char*))
 {
-        int     i;
-
-        i = 0;
-        while (i < length)
+        int     i = 0;
+        while   (tab[i])
         {
-                f(tab[i]);
+                if (f(tab[i]) == 1)
+                        return (1);
                 i++;
         }
+        return (0);
 }
 
 /*
 
-#include <unistd.h>
-
-void    put_one_positive_digit_and_break(int n)
-{
-        char    c;
-        if (n < 10 && n >= 0)
-        c = n % 10 + '0';write(1, &c, 1);write(1, "\n", 1);
-}
-
 // DRIVE
 
-int     main()
+#include <stdio.h>
+
+int     is_len_even(char *s)
 {
-        int     arr[] = {0, 9, 2, 7, 4, 6, 3, 5, 1, 8};
-        ft_foreach(arr, 10, &put_one_positive_digit_and_break);
+        int     i = 0;
+        if (!s) return 0;
+        while (s[i])    i++;
+        if (!(i % 2))     return 1;
+        return 0;
+}
+
+int     main(int argc, char **argv)
+{
+        (void)  argc;
+        printf("%i\n", ft_any(argv, &is_len_even));
 }
 
 */

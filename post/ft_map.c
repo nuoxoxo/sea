@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_foreach.c                                       :+:      :+:    :+:   */
+/*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,35 +10,46 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void    ft_foreach(int *tab, int length, void(*f)(int))
-{
-        int     i;
+#include <stdlib.h>
 
+int     *ft_map(int *tab, int length, int(*f)(int))
+{
+        int     *arr;
+        int     i;
+        arr = malloc(sizeof(int) * length);
+        if (!arr)
+                return (NULL);
         i = 0;
         while (i < length)
         {
-                f(tab[i]);
-                i++;
+            arr[i] = f(tab[i]);
+            i++;
         }
+        return (arr);
 }
 
 /*
 
-#include <unistd.h>
+#include <stdio.h>
 
-void    put_one_positive_digit_and_break(int n)
+int     f_modulo(int n)
 {
-        char    c;
-        if (n < 10 && n >= 0)
-        c = n % 10 + '0';write(1, &c, 1);write(1, "\n", 1);
+        int     num = n % 10;
+        return  num;
 }
 
 // DRIVE
 
 int     main()
 {
-        int     arr[] = {0, 9, 2, 7, 4, 6, 3, 5, 1, 8};
-        ft_foreach(arr, 10, &put_one_positive_digit_and_break);
+        int     tab[] = {0, -81, 512, -1024, 2147483647, -2147483648};
+        int     *arr = ft_map(tab, 6, f_modulo);
+        int     i = 0;
+        while (i < 6)
+        {
+            printf("%i  =  %i %% 10\n", arr[i], tab[i]);
+            i++;
+        }
 }
 
 */
