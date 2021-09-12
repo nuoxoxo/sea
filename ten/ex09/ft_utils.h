@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,29 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#ifndef         FT_UTILS_H
+#define         FT_UTILS_H
 
-long    ft_add(int a, int b)
-{
-        return (a + b);
-}
+#include        <unistd.h>
 
-long    ft_sub(int a, int b)
-{
-        return (a - b);
-}
+void            ops(int a, int b, void(*f)(int, int));
+void            calc(int a, int b, char *c);
+void            putlong(long n);
+void            ft_mul(int a, int b);
+void            ft_add(int a, int b);
+void            ft_sub(int a, int b);
+void            ft_div(int a, int b);
+void            ft_mod(int a, int b);
+void            ft_usage(int a, int b);
+int             ft_strcmp(char *a, char *b);
+int             ft_atoi(char *s);
 
-long    ft_div(int a, int b)
+typedef struct  s_opp
 {
-        return (a / b);
-}
+        char    *op;
+        void    (*fn)(int, int);
+}               t_opp;
 
-long    ft_mult(int a, int b)
-{
-        return (a * b);
-}
-
-long    ft_mod(int a, int b)
-{
-        return (a % b);
-}
+#endif
