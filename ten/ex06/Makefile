@@ -6,8 +6,8 @@ CC	:=	gcc
 CFLAGS	:=	-Wall -Werror -Wextra -I .
 RM	:=	rm -f
 
-all	:	@$(NAME)
 do-op	:	$(SRCS)
 		@$(CC) $(CFLAGS) -o $(NAME) $(SRCS)
+all	:	@$(NAME)
 clean	:	
 		@$(RM) $(NAME)
