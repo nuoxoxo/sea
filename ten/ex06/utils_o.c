@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_o.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,27 +12,44 @@
 
 #include <unistd.h>
 
-long    ft_add(int a, int b)
+void    putlong(long n);
+
+void    ft_add(int a, int b)
 {
-        return (a + b);
+        long    n;
+
+        n = a + b;
+        putlong(n);
 }
 
-long    ft_sub(int a, int b)
+void    ft_sub(int a, int b)
 {
-        return (a - b);
+        long    n;
+
+        n = a - b;
+        putlong(n);
 }
 
-long    ft_div(int a, int b)
+void    ft_div(int a, int b)
 {
-        return (a / b);
+        long    n;
+
+        n = a / b;
+        putlong(n);
 }
 
-long    ft_mult(int a, int b)
+void    ft_mult(int a, int b)
 {
-        return (a * b);
+        long    n;
+
+        n = a * b;
+        putlong(n);
 }
 
-long    ft_mod(int a, int b)
+void    ft_mod(int a, int b)
 {
-        return (a % b);
+        long    n;
+
+        n = a + b;
+        putlong(n);
 }
