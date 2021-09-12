@@ -24,21 +24,23 @@ void    ft_foreach(int *tab, int length, void(*f)(int))
 
 /*
 
+// DRIVE
+
 #include <unistd.h>
+
+void    put_one_positive_digit_and_break(int n);
+
+int     main()
+{
+        int     arr[] = {0, 9, 2, 7, 4, 6, 3, 5, 1, 8};
+        ft_foreach(arr, 10, &put_one_positive_digit_and_break);
+}
 
 void    put_one_positive_digit_and_break(int n)
 {
         char    c;
         if (n < 10 && n >= 0)
         c = n % 10 + '0';write(1, &c, 1);write(1, "\n", 1);
-}
-
-// DRIVE
-
-int     main()
-{
-        int     arr[] = {0, 9, 2, 7, 4, 6, 3, 5, 1, 8};
-        ft_foreach(arr, 10, &put_one_positive_digit_and_break);
 }
 
 */
