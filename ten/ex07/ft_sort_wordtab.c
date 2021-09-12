@@ -10,28 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-
-// DRIVE
-
-void    ft_sort_wordtab(char **arr);
 int     ft_strcmp(char *a, char *b);
-
-#include <stdio.h>
-
-int     main(int argc, char **argv)
-{
-        int i = 0;
-        while (i < argc) printf("%s\n", argv[i++]);
-        printf("\n");
-        ft_sort_wordtab(argv);
-        i = 0;
-        while (i < argc) printf("%s\n", argv[i++]);
-}
-
-*/
-
-//
 
 void    ft_sort_wordtab(char **tab)
 {
@@ -69,3 +48,25 @@ int     ft_strcmp(char *a, char *b)
         i++;
     return (a[i] - b[i]);
 }
+
+/*
+
+// DRIVE
+
+#include <stdio.h>
+
+void    ft_sort_wordtab(char **arr);
+int     ft_strcmp(char *a, char *b);
+
+
+int     main(int argc, char **argv)
+{
+        int i = 0;
+        while (i < argc) printf("%s\n", argv[i++]);
+        printf("\n");
+        ft_sort_wordtab(argv);
+        i = 0;
+        while (i < argc) printf("%s\n", argv[i++]);
+}
+
+*/
