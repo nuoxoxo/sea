@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_back.c                                :+:      :+:    :+:   */
+/*   ft_list_push_front.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,18 +15,17 @@
 
 t_list  *ft_create_elem(void *d);
 
-void    ft_list_push_back(t_list **begin_list, void *data)
+void    ft_list_push_front(t_list **begin_list, void *data)
 {
         t_list  *thing;
 
-        thing = *begin_list;
-        if (!thing)
+        if (!begin_list)
             *begin_list = ft_create_elem(data);
         else
         {
-            while (thing->next) 
-                thing = thing->next;
-            thing->next = ft_create_elem(data);
+            thing = ft_create_elem(data);
+            thing->next = *begin_list;
+            *begin_list = thing;
         }
 }
 
@@ -51,17 +50,18 @@ t_list  *ft_create_elem(void *data)
 int     main(int argc, char **argv)
 {
         (void)  argc;
+        
         char    data1 = *argv[1];
         int     data2 = atoi(argv[2]);
         t_list  *thing;
 
         thing = ft_create_elem(&data1);
-        printf("\nlist->data is : %c\n", *(char*)thing->data);
-        printf("list->next->data is empty : %p\n\n", thing->next);
-
-        ft_list_push_back(&thing, &data2);
-        printf("list->data is : %c\n", *(char*)thing->data);
-        printf("list->next->data is : %i\n\n", *(int*)thing->next->data);
+        printf("\nhead->data was : %c\n\n", *(char*)thing->data);
+        
+        ft_list_push_front(&thing, &data2);
+        printf("head->data is  : %i\n", *(int*)thing->data);
+        printf("head->data->next->data is : ");
+        printf("%c\n\n", *(char*)thing->next->data);
 }
 
 */

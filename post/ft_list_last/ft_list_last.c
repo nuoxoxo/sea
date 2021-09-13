@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_size.c                                     :+:      :+:    :+:   */
+/*   ft_list_last.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,21 +13,16 @@
 #include    <stdlib.h>
 #include    "ft_list.h"
 
-int     ft_list_size(t_list *begin_list)
+t_list  *ft_list_last(t_list *begin_list)
 {
-        t_list  *ptr;
-        int     i;
+        t_list      *end;
 
-        i = 0;
-        ptr = begin_list;
-        if (!ptr)
-            return (i);
-        while (ptr)
-        {
-            i++;
-            ptr = ptr->next;
-        }
-        return (i);
+        end = begin_list;
+        if (!end)
+            return (NULL);
+        while (end->next)
+            end = end->next;
+        return (end);
 }
 
 /*
@@ -57,9 +52,9 @@ int     main(int argc, char **argv)
         ft_list_push_front(&p, &data4);
         ft_list_push_back(&p, &data5);
         
-        printf("\nlist size : %i\n\n", ft_list_size(p));
-
-        printf("[0] : %li\n", *(long*)p->data);
+        printf("\ndata of the last item : %i\n\n", *(int*)ft_list_last(p)->data);
+        
+        printf("the full list\n[0] : %li\n", *(long*)p->data);
         printf("[1] : %u\n", *(unsigned int*)p->next->data);
         printf("[2] : %c\n", *(char*)p->next->next->data);
         printf("[3] : %i\n", *(short*)p->next->next->next->data);
