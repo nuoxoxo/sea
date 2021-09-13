@@ -78,12 +78,10 @@ int     main(int argc, char **argv)
 
         ptr = ft_list_push_params(argc, argv);
         i = 0;
-        //while (i < argc - 1)
         (void)argc;
         while (ptr)
         {
                 printf("%c\n", *(char*)ptr->data);
-                //i++;
                 ptr = ptr->next;
         }
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_size.c                                     :+:      :+:    :+:   */
+/*   ft_list_clear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,21 +13,16 @@
 #include    <stdlib.h>
 #include    "ft_list.h"
 
-int     ft_list_size(t_list *begin_list)
+void    ft_list_clear(t_list **begin_list)
 {
         t_list  *ptr;
-        int     i;
 
-        i = 0;
-        ptr = begin_list;
-        if (!ptr)
-            return (i);
-        while (ptr)
+        while   (*begin_list != NULL)
         {
-            i++;
-            ptr = ptr->next;
+                ptr = *begin_list;
+                *begin_list = (*begin_list)->next;
+                free(ptr);
         }
-        return (i);
 }
 
 /*
@@ -36,48 +31,36 @@ int     ft_list_size(t_list *begin_list)
 
 #include    <stdio.h>
 
-void    ft_list_push_front(t_list **head, void *data);
 void    ft_list_push_back(t_list **head, void *data);
 t_list  *ft_create_elem(void *d);
 
 int     main(int argc, char **argv)
 {
-        (void)          argc;
+        (void)  argc;
         
-        char            data1 = *argv[1];
-        unsigned int    data2 = atoi(argv[2]);
-        short           data3 = atoi(argv[3]); 
-        long            data4 = atoi(argv[4]);
-        int             data5 = atoi(argv[5]);
-        t_list          *p;
-
-        p = ft_create_elem(&data1);
-        ft_list_push_front(&p, &data2);
-        ft_list_push_back(&p, &data3);
-        ft_list_push_front(&p, &data4);
-        ft_list_push_back(&p, &data5);
-        
-        printf("\nlist size : %i\n\n", ft_list_size(p));
-
-        printf("[0] : %li\n", *(long*)p->data);
-        printf("[1] : %u\n", *(unsigned int*)p->next->data);
-        printf("[2] : %c\n", *(char*)p->next->next->data);
-        printf("[3] : %i\n", *(short*)p->next->next->next->data);
-        printf("[4] : %i\n\n", *(int*)p->next->next->next->next->data);
-}
-
-void    ft_list_push_front(t_list **head, void *data)
-{
+        char    data1 = *argv[1];
+        char    data2 = *argv[2];
+        char    data3 = *argv[3]; 
+        char    data4 = *argv[4];
+        char    data5 = *argv[5];
         t_list  *p;
 
-        if (!head)
-            *head = ft_create_elem(data);
-        else
-        {
-            p = ft_create_elem(data);
-            p->next = *head;
-            *head = p;
-        }
+        p = NULL;
+        ft_list_push_back(&p, &data1);
+        ft_list_push_back(&p, &data2);
+        ft_list_push_back(&p, &data3);
+        ft_list_push_back(&p, &data4);
+        ft_list_push_back(&p, &data5);
+
+        printf("\nBefore : \n\n[0] : %c\n", *(char*)p->data);
+        printf("[1] : %c\n", *(char*)p->next->data);
+        printf("[2] : %c\n", *(char*)p->next->next->data);
+        printf("[3] : %c\n", *(char*)p->next->next->next->data);
+        printf("[4] : %c\n\n", *(char*)p->next->next->next->next->data);
+
+        ft_list_clear(&p);
+        
+        printf("After : \n\n%p\n\n", p);
 }
 
 void    ft_list_push_back(t_list **head, void *data)
@@ -85,8 +68,8 @@ void    ft_list_push_back(t_list **head, void *data)
         t_list  *p;
 
         p = *head;
-        if (!head)
-            *head = ft_create_elem(&data);
+        if (!p)
+            *head = ft_create_elem(data);
         else
         {
             while (p->next)

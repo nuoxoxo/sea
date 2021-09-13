@@ -24,6 +24,7 @@ void    ft_list_push_back(t_list **begin_list, void *data)
             *begin_list = ft_create_elem(data);
         else
         {
+            ptr = *begin_list;
             while (ptr->next) 
                 ptr = ptr->next;
             ptr->next = ft_create_elem(data);
@@ -54,8 +55,9 @@ int     main(int argc, char **argv)
         char    data1 = *argv[1];
         int     data2 = atoi(argv[2]);
         t_list  *ptr;
-
-        ptr = ft_create_elem(&data1);
+        
+        ptr = NULL;
+        ft_list_push_back(&ptr, &data1);
         printf("\nlist->data is : %c\n", *(char*)ptr->data);
         printf("list->next->data is empty : %p\n\n", ptr->next);
 

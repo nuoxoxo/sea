@@ -19,7 +19,8 @@ void    ft_list_push_front(t_list **begin_list, void *data)
 {
         t_list  *ptr;
 
-        if (!begin_list)
+        ptr = *begin_list;
+        if (!ptr)
             *begin_list = ft_create_elem(data);
         else
         {
@@ -55,7 +56,8 @@ int     main(int argc, char **argv)
         int     data2 = atoi(argv[2]);
         t_list  *ptr;
 
-        ptr = ft_create_elem(&data1);
+        //ptr = NULL;   //  <----   w/o this line the other main (push back) wont work
+        ft_list_push_front(&ptr, &data1);
         printf("\nhead->data was : %c\n\n", *(char*)ptr->data);
         
         ft_list_push_front(&ptr, &data2);
