@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    <stdlib.h>
 #include    "ft_list.h"
 
 int     ft_list_size(t_list *begin_list)
@@ -34,6 +33,7 @@ int     ft_list_size(t_list *begin_list)
 
 // DRIVE
 
+#include    <stdlib.h>
 #include    <stdio.h>
 
 void    ft_list_push_front(t_list **head, void *data);
