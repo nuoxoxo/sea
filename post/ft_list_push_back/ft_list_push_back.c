@@ -17,29 +17,29 @@ t_list  *ft_create_elem(void *d);
 
 void    ft_list_push_back(t_list **begin_list, void *data)
 {
-        t_list  *thing;
+        t_list  *ptr;
 
-        thing = *begin_list;
-        if (!thing)
+        ptr = *begin_list;
+        if (!ptr)
             *begin_list = ft_create_elem(data);
         else
         {
-            while (thing->next) 
-                thing = thing->next;
-            thing->next = ft_create_elem(data);
+            while (ptr->next) 
+                ptr = ptr->next;
+            ptr->next = ft_create_elem(data);
         }
 }
 
 t_list  *ft_create_elem(void *data)
 {
-        t_list  *thing;
+        t_list  *ptr;
 
-        thing = malloc(sizeof(t_list));
-        if (!thing)
+        ptr = malloc(sizeof(t_list));
+        if (!ptr)
             return (NULL);
-        thing->data = data;
-        thing->next = NULL;
-        return (thing);
+        ptr->data = data;
+        ptr->next = NULL;
+        return (ptr);
 }
 
 /*
@@ -53,15 +53,15 @@ int     main(int argc, char **argv)
         (void)  argc;
         char    data1 = *argv[1];
         int     data2 = atoi(argv[2]);
-        t_list  *thing;
+        t_list  *ptr;
 
-        thing = ft_create_elem(&data1);
-        printf("\nlist->data is : %c\n", *(char*)thing->data);
-        printf("list->next->data is empty : %p\n\n", thing->next);
+        ptr = ft_create_elem(&data1);
+        printf("\nlist->data is : %c\n", *(char*)ptr->data);
+        printf("list->next->data is empty : %p\n\n", ptr->next);
 
-        ft_list_push_back(&thing, &data2);
-        printf("list->data is : %c\n", *(char*)thing->data);
-        printf("list->next->data is : %i\n\n", *(int*)thing->next->data);
+        ft_list_push_back(&ptr, &data2);
+        printf("list->data is : %c\n", *(char*)ptr->data);
+        printf("list->next->data is : %i\n\n", *(int*)ptr->next->data);
 }
 
 */
