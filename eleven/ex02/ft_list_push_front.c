@@ -17,28 +17,28 @@ t_list  *ft_create_elem(void *d);
 
 void    ft_list_push_front(t_list **begin_list, void *data)
 {
-        t_list  *thing;
+        t_list  *ptr;
 
         if (!begin_list)
             *begin_list = ft_create_elem(data);
         else
         {
-            thing = ft_create_elem(data);
-            thing->next = *begin_list;
-            *begin_list = thing;
+            ptr = ft_create_elem(data);
+            ptr->next = *begin_list;
+            *begin_list = ptr;
         }
 }
 
 t_list  *ft_create_elem(void *data)
 {
-        t_list  *thing;
+        t_list  *ptr;
 
-        thing = malloc(sizeof(t_list));
-        if (!thing)
+        ptr = malloc(sizeof(t_list));
+        if (!ptr)
             return (NULL);
-        thing->data = data;
-        thing->next = NULL;
-        return (thing);
+        ptr->data = data;
+        ptr->next = NULL;
+        return (ptr);
 }
 
 /*
@@ -53,15 +53,15 @@ int     main(int argc, char **argv)
         
         char    data1 = *argv[1];
         int     data2 = atoi(argv[2]);
-        t_list  *thing;
+        t_list  *ptr;
 
-        thing = ft_create_elem(&data1);
-        printf("\nhead->data was : %c\n\n", *(char*)thing->data);
+        ptr = ft_create_elem(&data1);
+        printf("\nhead->data was : %c\n\n", *(char*)ptr->data);
         
-        ft_list_push_front(&thing, &data2);
-        printf("head->data is  : %i\n", *(int*)thing->data);
+        ft_list_push_front(&ptr, &data2);
+        printf("head->data is  : %i\n", *(int*)ptr->data);
         printf("head->data->next->data is : ");
-        printf("%c\n\n", *(char*)thing->next->data);
+        printf("%c\n\n", *(char*)ptr->next->data);
 }
 
 */
