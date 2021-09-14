@@ -51,7 +51,8 @@ int     main(int argc, char **argv)
         int             data5 = atoi(argv[5]);
         t_list          *p;
 
-        p = ft_create_elem(&data1);
+        p = NULL;
+        ft_list_push_back(&p, &data1);
         ft_list_push_front(&p, &data2);
         ft_list_push_back(&p, &data3);
         ft_list_push_front(&p, &data4);
@@ -70,7 +71,7 @@ void    ft_list_push_front(t_list **head, void *data)
 {
         t_list  *p;
 
-        if (!head)
+        if (!*head)
             *head = ft_create_elem(data);
         else
         {
@@ -84,11 +85,11 @@ void    ft_list_push_back(t_list **head, void *data)
 {
         t_list  *p;
 
-        p = *head;
-        if (!head)
-            *head = ft_create_elem(&data);
+        if (!*head)
+            *head = ft_create_elem(data);
         else
         {
+            p = *head;
             while (p->next)
                 p = p->next;
             p->next = ft_create_elem(data);
