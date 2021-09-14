@@ -13,41 +13,32 @@
 #include    <stdlib.h>
 #include    "ft_list.h"
 
-void    ft_list_push_back(t_list **list, void *data);
 t_list  *ft_create_elem(void *data);
 
 t_list  *ft_list_push_params(int ac, char **av)
 {
-        int         i;
+        t_list      *head;
         t_list      *p;
+        int         i;
 
-        if (ac < 2)
+        i = 2;
+        if (ac < i)
             return (NULL);
-        p = ft_create_elem(av[ac - 1]);
-        if (ac == 2)
+        if (ac == i)
+        {
+            p = ft_create_elem(av[1]);
             return (p);
-        i = ac - 2;
-        while (i > 0)
-        {
-            ft_list_push_back(&p, av[i]);
-            i--;
         }
-        return (p);
-}
-
-void    ft_list_push_back(t_list **list, void *data)
-{
-        t_list  *p;
-
-        p = *list;
-        if (!p)
-            *list = ft_create_elem(data);
-        else
+        head = ft_create_elem(av[i++]);
+        p = head;
+        while (i < ac)
         {
-            while (p->next)
-                p = p->next;
-            p->next = ft_create_elem(data);
+            p->next = ft_create_elem(av[i]);
+            p = p->next;
+            i++;
         }
+        p->next = ft_create_elem(av[1]);
+        return (head);
 }
 
 t_list  *ft_create_elem(void *data)
@@ -68,20 +59,16 @@ t_list  *ft_create_elem(void *data)
 
 #include    <stdio.h>
 
-t_list  *ft_list_push_params(int argc, char **argv);
-t_list  *ft_create_elem(void *d);
-void    ft_list_push_back(t_list **p, void *d);
-
 int     main(int argc, char **argv)
 {
-        t_list  *ptr;
+        (void)  argc;
+        t_list  *p;
 
-        ptr = ft_list_push_params(argc, argv);
-        (void)argc;
-        while (ptr)
+        p = ft_list_push_params(argc, argv);
+        while (p)
         {
-                printf("%c\n", *(char*)ptr->data);
-                ptr = ptr->next;
+                printf("%c\n", *(char*)p->data);
+                p = p->next;
         }
 }
 

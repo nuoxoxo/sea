@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_elem.c                                   :+:      :+:    :+:   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,42 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    <stdlib.h>
-#include    "ft_list.h"
+#ifndef FT_LIST_H
+#define FT_LIST_H
 
-t_list  *ft_create_elem(void *data)
+typedef struct      s_list
 {
-        t_list  *elem;
+    void            *data;
+    struct  s_list  *next;
+}                   t_list;
 
-        elem = malloc(sizeof(t_list));
-        if (!elem)
-                return (NULL);
-        elem->data = data;
-        elem->next = NULL;
-        return (elem);
-}
-
-/*
-
-//  DRIVE
-
-#include    <stdio.h>
-
-int     main()
-{
-        char        data_1;
-        int         data_2;
-
-        t_list      *list_1;
-        t_list      *list_2;
-        
-        data_1 = 'H';
-        list_1 = ft_create_elem(&data_1);
-        printf("list[0].data :  (char) %c\n", *(char*)list_1->data);
-
-        data_2 = 1024;
-        list_2 = ft_create_elem(&data_2);
-        printf("list[1].data :  (int) %d\n", *(int*)list_2->data);
-}
-
-*/
+#endif
