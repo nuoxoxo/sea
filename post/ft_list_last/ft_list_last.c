@@ -25,81 +25,61 @@ t_list  *ft_list_last(t_list *begin_list)
         return (end);
 }
 
-/*
 
 // DRIVE
 
 #include    <stdio.h>
 
-void    ft_list_push_front(t_list **head, void *data);
-void    ft_list_push_back(t_list **head, void *data);
-t_list  *ft_create_elem(void *d);
+t_list  *pp(int argc, char **argv);
+t_list  *ce(void *d);
 
 int     main(int argc, char **argv)
 {
-        (void)          argc;
+        (void)  argc;
         
-        char            data1 = *argv[1];
-        unsigned int    data2 = atoi(argv[2]);
-        short           data3 = atoi(argv[3]); 
-        long            data4 = atoi(argv[4]);
-        int             data5 = atoi(argv[5]);
-        t_list          *p;
-
-        p = ft_create_elem(&data1);
-        ft_list_push_front(&p, &data2);
-        ft_list_push_back(&p, &data3);
-        ft_list_push_front(&p, &data4);
-        ft_list_push_back(&p, &data5);
-        
-        printf("\ndata of the last item : %i\n\n", *(int*)ft_list_last(p)->data);
-        
-        printf("the full list\n[0] : %li\n", *(long*)p->data);
-        printf("[1] : %u\n", *(unsigned int*)p->next->data);
-        printf("[2] : %c\n", *(char*)p->next->next->data);
-        printf("[3] : %i\n", *(short*)p->next->next->next->data);
-        printf("[4] : %i\n\n", *(int*)p->next->next->next->next->data);
-}
-
-void    ft_list_push_front(t_list **head, void *data)
-{
         t_list  *p;
+        int     i;
 
-        if (!head)
-            *head = ft_create_elem(data);
-        else
+        if (!(p = pp(argc, argv)))  return 0;
+
+
+        printf("\ndata of the last item : %c\n", *(char*)ft_list_last(p)->data);
+        printf("\nthe full list : \n");
+        
+        i = 0;
+        while (p)
         {
-            p = ft_create_elem(data);
-            p->next = *head;
-            *head = p;
+            printf("[%i] : %c\n", i, *(char*)p->data);
+            p = p->next;
+            i++;
         }
+
+        printf("\n");
 }
 
-void    ft_list_push_back(t_list **head, void *data)
+t_list  *pp(int ac, char **av)
 {
-        t_list  *p;
-
-        p = *head;
-        if (!head)
-            *head = ft_create_elem(&data);
-        else
+        t_list  *head, *p;
+        int     i = 1;
+        
+        if (ac < 2) return NULL;
+        head = ce(av[i++]);
+        p = head;
+        while   (i < ac)
         {
-            while (p->next)
+                p->next = ce(av[i++]);
                 p = p->next;
-            p->next = ft_create_elem(data);
         }
+        return  head;
 }
 
-t_list  *ft_create_elem(void *data)
+t_list  *ce(void *data)
 {
         t_list  *p;
-
+        
         p = malloc(sizeof(t_list));
-        if (!p)
-            return (NULL);
+        if (!p) return NULL;
         p->data = data;
         p->next = NULL;
-        return (p);
+        return  p;
 }
-
-*/
