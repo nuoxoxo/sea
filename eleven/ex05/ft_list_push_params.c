@@ -46,6 +46,7 @@ t_list  *ft_create_elem(void *data)
         return (p);
 }
 
+/*
 
 // DRIVE
 
@@ -63,3 +64,5 @@ int     main(int argc, char **argv)
                 p = p->next;
         }
 }
+
+*/

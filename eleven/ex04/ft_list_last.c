@@ -25,6 +25,7 @@ t_list  *ft_list_last(t_list *begin_list)
         return (end);
 }
 
+/*
 
 // DRIVE
 
@@ -83,3 +84,5 @@ t_list  *ce(void *data)
         p->next = NULL;
         return  p;
 }
+
+*/
