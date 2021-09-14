@@ -17,7 +17,7 @@ void    ft_list_clear(t_list **begin_list)
 {
         t_list  *ptr;
 
-        while   (*begin_list != NULL)
+        while   (*begin_list)
         {
                 ptr = *begin_list;
                 *begin_list = (*begin_list)->next;
@@ -31,60 +31,54 @@ void    ft_list_clear(t_list **begin_list)
 
 #include    <stdio.h>
 
-void    ft_list_push_back(t_list **head, void *data);
-t_list  *ft_create_elem(void *d);
+t_list  *pp(int n, char **s);
+t_list  *ce(void *d);
 
 int     main(int argc, char **argv)
 {
         (void)  argc;
         
-        char    data1 = *argv[1];
-        char    data2 = *argv[2];
-        char    data3 = *argv[3]; 
-        char    data4 = *argv[4];
-        char    data5 = *argv[5];
         t_list  *p;
+        int     i;
 
-        p = NULL;
-        ft_list_push_back(&p, &data1);
-        ft_list_push_back(&p, &data2);
-        ft_list_push_back(&p, &data3);
-        ft_list_push_back(&p, &data4);
-        ft_list_push_back(&p, &data5);
+        if (!(p = pp(argc, argv)))  return 0;
 
-        printf("\nBefore : \n\n[0] : %c\n", *(char*)p->data);
-        printf("[1] : %c\n", *(char*)p->next->data);
-        printf("[2] : %c\n", *(char*)p->next->next->data);
-        printf("[3] : %c\n", *(char*)p->next->next->next->data);
-        printf("[4] : %c\n\n", *(char*)p->next->next->next->next->data);
+        i = 0;
+        printf("Before : \n\n");
+        
+        while (p)
+        {
+            printf("[%i] : %c\n", i, *(char*)p->data);
+            p = p->next;
+            i++;
+        }
 
         ft_list_clear(&p);
-        
-        printf("After : \n\n%p\n\n", p);
+        printf("\nAfter : \n\n %p \n\n", p);
 }
 
-void    ft_list_push_back(t_list **head, void *data)
+t_list  *pp(int n, char **s)
 {
-        t_list  *p;
+        t_list  *head, *p;
+        int     i = 1;
 
-        p = *head;
-        if (!p)
-            *head = ft_create_elem(data);
-        else
+        if (n < 2)  return NULL;
+        head = ce(s[i++]);
+        p = head;
+        while (i < n)
         {
-            while (p->next)
-                p = p->next;
-            p->next = ft_create_elem(data);
+            p->next = ce(s[i++]);
+            p = p->next;
         }
+        return  head;
 }
 
-t_list  *ft_create_elem(void *data)
+t_list  *ce(void *data)
 {
         t_list  *p;
 
         p = malloc(sizeof(t_list));
-        if (!p)
-            return (NULL);
+        if (!p) return (NULL);
         p->data = data;
         p->next = NULL;
         return (p);
