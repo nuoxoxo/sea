@@ -15,13 +15,14 @@
 
 t_list  *ft_create_elem(void *data)
 {
-        t_list  *ptr;
+        t_list  *elem;
 
-        ptr = malloc(sizeof(t_list));
-        if (!ptr)     return (NULL);
-        ptr->data = data;
-        ptr->next = NULL;
-        return (ptr);
+        elem = malloc(sizeof(t_list));
+        if (!elem)
+                return (NULL);
+        elem->data = data;
+        elem->next = NULL;
+        return (elem);
 }
 
 /*
@@ -33,18 +34,18 @@ t_list  *ft_create_elem(void *data)
 int     main()
 {
         char        data_1;
-        t_list      *list_1;
-        
         int         data_2;
+
+        t_list      *list_1;
         t_list      *list_2;
         
         data_1 = 'H';
         list_1 = ft_create_elem(&data_1);
-        printf("thing_1->data : %c\n", *(char*)list_1->data);
+        printf("list[0].data :  (char) %c\n", *(char*)list_1->data);
 
         data_2 = 1024;
         list_2 = ft_create_elem(&data_2);
-        printf("thing_2->data : %d\n", *(int*)list_2->data);
+        printf("list[1].data :  (int) %d\n", *(int*)list_2->data);
 }
 
 */
