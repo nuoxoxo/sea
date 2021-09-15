@@ -90,9 +90,8 @@ void    grid_dump(char **grid)
         }
 }
 
-int     count_size_forward(char *s, int index)
+int     count_size_forward(char *s, int i)
 {
-        int i = index;
         int size = 0;
         while (s[i] && !iswsp(s[i++]))  size++;
         return size;
