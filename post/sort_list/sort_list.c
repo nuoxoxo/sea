@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include    <stdlib.h>
-#include    "ft_list.h"
+#include    "list.h"
 
 void        swap_int_data(int *x, int *y);
 
