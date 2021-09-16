@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_last.c                                     :+:      :+:    :+:   */
+/*   ft_list_foreach_if.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,63 +13,51 @@
 #include    <stdlib.h>
 #include    "ft_list.h"
 
-t_list  *ft_list_last(t_list *begin_list)
+void    ft_list_foreach_if \
+        (t_list *begin_list, void (*f)(void *), void *data_ref, int (*cmp)())
 {
-        t_list      *end;
+        t_list      *p;
 
-        end = begin_list;
-        if (!end)
-            return (NULL);
-        while (end->next)
-            end = end->next;
-        return (end);
+        p = begin_list;
+        while (p)
+        {
+            if (cmp(p->data, data_ref) == 0) f(p->data);
+            p = p->next;
+        }
 }
 
 /*
 
 // DRIVE
 
+#include    <string.h>
 #include    <stdio.h>
 
-t_list  *pp(int argc, char **argv);
+t_list  *pp(int n, char **s);
 t_list  *ce(void *d);
+void    pf(void *s);
+void    ft_list_foreach_if \
+        (t_list *begin_list, void (*f)(void *), void *data_ref, int (*cmp)());
 
 int     main(int argc, char **argv)
 {
-        (void)  argc;
-        
-        t_list  *p;
-        int     i;
-
-        if (!(p = pp(argc, argv)))  return 0;
-
-
-        printf("\ndata of the last item : %c\n", *(char*)ft_list_last(p)->data);
-        printf("\nthe full list : \n");
-        
-        i = 0;
-        while (p)
-        {
-            printf("[%i] : %c\n", i, *(char*)p->data);
-            p = p->next;
-            i++;
-        }
-
-        printf("\n");
+        t_list      *list;
+        list = pp(argc, argv);
+        ft_list_foreach_if(list, &pf, "abc", &strcmp);
 }
 
-t_list  *pp(int ac, char **av)
+t_list  *pp(int n, char **s)
 {
         t_list  *head, *p;
         int     i = 1;
-        
-        if (ac < 2) return NULL;
-        head = ce(av[i++]);
+
+        if (n < 2)  return NULL;
+        head = ce(s[i++]);
         p = head;
-        while   (i < ac)
+        while (i < n)
         {
-                p->next = ce(av[i++]);
-                p = p->next;
+            p->next = ce(s[i++]);
+            p = p->next;
         }
         return  head;
 }
@@ -77,12 +65,17 @@ t_list  *pp(int ac, char **av)
 t_list  *ce(void *data)
 {
         t_list  *p;
-        
+
         p = malloc(sizeof(t_list));
         if (!p) return NULL;
         p->data = data;
         p->next = NULL;
-        return  p;
+        return (p);
+}
+
+void    pf(void *s)
+{
+        printf("%s\n", (char*)s);
 }
 
 */

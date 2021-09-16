@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_params.c                              :+:      :+:    :+:   */
+/*   ft_list_find.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,56 +13,68 @@
 #include    <stdlib.h>
 #include    "ft_list.h"
 
-t_list  *ft_create_elem(void *data);
-
-t_list  *ft_list_push_params(int ac, char **av)
+t_list  *ft_list_find(t_list *begin_list, void *data_ref, int (*cmp)())
 {
-        t_list      *head;
         t_list      *p;
-        int         i;
 
-        i = 1;
-        if (ac < 2)
-            return (NULL);
-        head = ft_create_elem(av[i++]);
-        p = head;
-        while (i < ac)
+        p = begin_list;
+
+        while (p)
         {
-            p->next = ft_create_elem(av[i++]);
+            if (cmp(p->data, data_ref) == 0)
+                return (p);
             p = p->next;
         }
-        return (head);
+        return (NULL);
 }
 
-t_list  *ft_create_elem(void *data)
+// DRIVE
+
+#include    <string.h>
+#include    <stdio.h>
+
+t_list  *ft_list_find(t_list *begin_list, void *data_ref, int (*cmp)());
+t_list  *pp(int n, char **s);
+t_list  *ce(void *d);
+void    put_ptr(void *p);
+
+int     main(int argc, char **argv)
+{
+        t_list      *list;
+        list = pp(argc, argv);
+        put_ptr(ft_list_find(list, "abc", &strcmp));
+}
+
+t_list  *pp(int n, char **s)
+{
+        t_list  *head, *p;
+        int     i = 1;
+
+        if (n < 2)  return NULL;
+        head = ce(s[i++]);
+        p = head;
+        while (i < n)
+        {
+            p->next = ce(s[i++]);
+            p = p->next;
+        }
+        return  head;
+}
+
+t_list  *ce(void *data)
 {
         t_list  *p;
 
         p = malloc(sizeof(t_list));
-        if (!p)
-            return (NULL);
+        if (!p) return NULL;
         p->data = data;
         p->next = NULL;
         return (p);
 }
 
-/*
-
-// DRIVE
-
-#include    <stdio.h>
-
-int     main(int argc, char **argv)
+void    put_ptr(void *p)
 {
-        (void)  argc;
-        t_list  *p;
-
-        p = ft_list_push_params(argc, argv);
-        while (p)
-        {
-                printf("%c\n", *(char*)p->data);
-                p = p->next;
-        }
+        printf("%p\n", p);
 }
 
-*/
+
