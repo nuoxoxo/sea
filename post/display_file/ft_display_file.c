@@ -32,7 +32,9 @@ int main(int argc, char **argv)
     name = argv[1];
     fd = open(name, O_RDONLY);
     if (fd < 0)
+    {
         return (0);
+    }
     while (read(fd, &c, 1))
     {
         write(1, &c, 1);
