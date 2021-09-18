@@ -8,6 +8,7 @@ int     next_permutation(int n, char **s)
         char    *temp;
 
         if (n < 2)  return 1;
+
         L = -1;
         i = 0;
         while (i < n - 1)
@@ -16,6 +17,7 @@ int     next_permutation(int n, char **s)
             i++;
         }
         if (L < 0)  return 0;   
+        
         i = L + 1;
         R = -1;
         while (i < n)
@@ -24,11 +26,14 @@ int     next_permutation(int n, char **s)
             i++;
         }
         if (R < 0)  return 0;
+        
         temp = s[L];
         s[L] = s[R];
         s[R] = temp;
+        
         // Reverse the sequence from a[k + 1] up to and 
         // including the final element a[n] - wiki
+        
         i = L + 1;
         j = n - 1;
         while (i < j)
