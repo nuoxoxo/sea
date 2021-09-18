@@ -10,11 +10,7 @@ int     main()
     ref = malloc(sizeof(int) * 10);
     
     i = 0;
-    while (i < 10)
-    {
-        ref[i] = 0;
-        i++;
-    }
+    while (i < 10)  ref[i++] = 0;
     while (scanf("%c", &c) == 1)
     {
         i = 0;
@@ -26,10 +22,6 @@ int     main()
     }
     
     i = 0;
-    while (i < 10)
-    {
-        printf("%i ", ref[i]);
-        i++;
-    }
+    while (i < 10)  printf("%i ", ref[i++]);
     printf("\n");
 }
