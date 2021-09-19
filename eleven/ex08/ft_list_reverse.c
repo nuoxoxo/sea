@@ -55,7 +55,7 @@ int     main(int argc, char **argv)
         printf("\noriginal list \n\n");
         while (i < argc - 1)
         {
-            printf("[%i] : %c\n", i, *(char*)ptr1->data);
+            printf("[%i] : %s\n", i, (char*)ptr1->data);
             ptr1 = ptr1->next;
             i++;
         }
@@ -68,7 +68,7 @@ int     main(int argc, char **argv)
         printf("reversed list \n\n");
         while (ptr2)
         {
-            printf("[%i] : %c\n", i, *(char*)ptr2->data);
+            printf("[%i] : %s\n", i, (char*)ptr2->data);
             ptr2 = ptr2->next;
             i++;
         }
