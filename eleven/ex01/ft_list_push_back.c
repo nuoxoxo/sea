@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_back.c                                :+:      :+:    :+:   */
+/*   _                                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 10:46:48 by nuxu              #+#    #+#             */
-/*   Updated: 2021/08/12 11:43:02 by nuxu             ###   ########.fr       */
+/*   Created: 2021/0_/__ __:__:__ by nxu               #+#    #+#             */
+/*   Updated: 2021/0_/__ __:__:__ by nxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    <stdlib.h>
-#include    "ft_list.h"
+#include <stdlib.h>
+#include "ft_list.h"
 
-t_list  *ft_create_elem(void *d);
+t_list  *ce(void *d);
 
 void    ft_list_push_back(t_list **begin_list, void *data)
 {
         t_list  *ptr;
 
         if (!*begin_list)
-            *begin_list = ft_create_elem(data);
+            *begin_list = ce(data);
         else
         {
             ptr = *begin_list;
             while (ptr->next)
                 ptr = ptr->next;
-            ptr->next = ft_create_elem(data);
+            ptr->next = ce(data);
         }
 }
 
-t_list  *ft_create_elem(void *data)
+t_list  *ce(void *data)
 {
         t_list  *ptr;
 
@@ -46,23 +46,23 @@ t_list  *ft_create_elem(void *data)
 
 // DRIVE
 
-#include    <stdio.h>
+#include <stdio.h>
 
 int     main(int argc, char **argv)
 {
         (void)  argc;
-        char    data1 = *argv[1];
+        char    *data1 = argv[1];
         int     data2 = atoi(argv[2]);
         t_list  *ptr;
         
         ptr = NULL;
-        ft_list_push_back(&ptr, &data1);
-        printf("\nlist->data is : %c\n", *(char*)ptr->data);
-        printf("list->next->data is empty : %p\n\n", ptr->next);
+        ft_list_push_back(&ptr, data1);
+        printf("\n%s\n", (char*)ptr->data);
+        printf("%p\n", ptr->next);
 
         ft_list_push_back(&ptr, &data2);
-        printf("list->data is : %c\n", *(char*)ptr->data);
-        printf("list->next->data is : %i\n\n", *(int*)ptr->next->data);
+        printf("\n%s\n", (char*)ptr->data);
+        printf("%i\n\n", *(int*)ptr->next->data);
 }
 
 */

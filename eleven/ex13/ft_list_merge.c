@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_merge.c                                    :+:      :+:    :+:   */
+/*   _                                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 10:46:48 by nuxu              #+#    #+#             */
-/*   Updated: 2021/08/12 11:43:02 by nuxu             ###   ########.fr       */
+/*   Created: 2021/0_/__ __:__:__ by nxu               #+#    #+#             */
+/*   Updated: 2021/0_/__ __:__:__ by nxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,14 @@ int     main(int argc, char **argv)
         t_list      *p;
         t_list      *list_1;
         t_list      *list_2, *list_3;
+        if (argc < 2)   return 0;
         
         list_1 = pp(argc, argv);
         list_2 = ce((char *)"hello world");
         list_3 = ce((char *)"good music");
         list_2->next = list_3;
         
-        printf("\nHere is list 1 : \n");
+        printf("\nHere is list 1 : \n\n");
         p = list_1;
         while (p)
         {
@@ -51,7 +52,7 @@ int     main(int argc, char **argv)
             p = p->next;
         }        
         
-        printf("\nHere s list 2 : \n");
+        printf("\n\nHere s list 2 : \n\n");
         p = list_2;
         while (p)
         {
@@ -60,13 +61,15 @@ int     main(int argc, char **argv)
         }
         ft_list_merge(&list_1, list_2);
 
-        printf("\nLists 1 & 2 merged : \n");
+        printf("\n\nLists 1 & 2 merged : \n\n");
         p = list_1;
         while (p)
         {
             printf("%s\n", (char*)p->data);
             p = p->next;
         }
+
+        printf("\n");
 }
 
 t_list  *pp(int n, char **s)
