@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_remove_if.c                                :+:      :+:    :+:   */
+/*   _                                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 10:46:48 by nuxu              #+#    #+#             */
-/*   Updated: 2021/08/12 11:43:02 by nuxu             ###   ########.fr       */
+/*   Created: 2021/0_/__ __:__:__ by nxu               #+#    #+#             */
+/*   Updated: 2021/0_/__ __:__:__ by nxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,14 @@ t_list  *ce(void *d);
 int     main(int argc, char **argv)
 {
         t_list      *list;
+        char        *word;
         
-        printf("\nOriginal list : \n");
-        list = pp(argc, argv);
-        put_list(list);
-        
-        printf("\nAfter removal : \n");
-        ft_list_remove_if(&list, "abc", &strcmp);
-        put_list(list);
-
-        printf("\n");
+        list = pp(argc, argv);  word = "abc";
+        printf("\nOriginal list : \n"); put_list(list);
+        printf("\nNow remove : %s\n\n", word);
+        printf("\nAfter removal : \n\n");
+        ft_list_remove_if(&list, word, &strcmp);
+        put_list(list); printf("\n");
 }
 
 t_list  *pp(int n, char **s)
@@ -98,7 +96,7 @@ void    put_list(t_list *list)
         p = list;
         while (p)
         {
-            printf("%s ", (char*)p->data);
+            printf("%s\n", (char*)p->data);
             p = p->next;
         }
         printf("\n");

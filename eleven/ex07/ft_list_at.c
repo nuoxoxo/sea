@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_at.c                                     :+:      :+:    :+:   */
+/*   _                                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 10:46:48 by nuxu              #+#    #+#             */
-/*   Updated: 2021/08/12 11:43:02 by nuxu             ###   ########.fr       */
+/*   Created: 2021/0_/__ __:__:__ by nxu               #+#    #+#             */
+/*   Updated: 2021/0_/__ __:__:__ by nxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,31 +43,24 @@ t_list  *ce(void *d);
 
 int     main(int argc, char **argv)
 {
-        (void)  argc;
-        
         t_list  *head;
         t_list  *p;
         int     i;
 
         if (!(p = pp(argc, argv)))  return 0;
-        
         head = p;
         i = 0;
-        
         printf("\nFull list : \n");
-        
         while (p)
         {
-            printf("[%i] : %c\n", i, *(char*)p->data);
+            printf("[%i] : %s\n", i, (char*)p->data);
             p = p->next;
             i++;
         }
-
         i = 4;
-        printf("\nData at %i : %c",i,*(char*)ft_list_at(head,i)->data);
-        
+        printf("\nData at %i : %s", i, (char*)ft_list_at(head, i)->data);
         i = 2;
-        printf("\nData at %i : %c\n\n",i,*(char*)ft_list_at(head,i)->data);
+        printf("\nData at %i : %s\n\n", i, (char*)ft_list_at(head, i)->data);
 }
 
 t_list  *pp(int n, char **s)
