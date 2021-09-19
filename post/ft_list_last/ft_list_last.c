@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_last.c                                     :+:      :+:    :+:   */
+/*   _                                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 10:46:48 by nuxu              #+#    #+#             */
-/*   Updated: 2021/08/12 11:43:02 by nuxu             ###   ########.fr       */
+/*   Created: 2021/0_/__ __:__:__ by nxu               #+#    #+#             */
+/*   Updated: 2021/0_/__ __:__:__ by nxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    <stdlib.h>
-#include    "ft_list.h"
+#include <stdlib.h>
+#include "ft_list.h"
 
 t_list  *ft_list_last(t_list *begin_list)
 {
@@ -25,31 +25,30 @@ t_list  *ft_list_last(t_list *begin_list)
         return (end);
 }
 
+/*
 
 // DRIVE
 
-#include    <stdio.h>
+#include <stdio.h>
 
 t_list  *pp(int argc, char **argv);
 t_list  *ce(void *d);
 
 int     main(int argc, char **argv)
 {
-        (void)  argc;
-        
         t_list  *p;
         int     i;
 
         if (!(p = pp(argc, argv)))  return 0;
 
 
-        printf("\ndata of the last item : %c\n", *(char*)ft_list_last(p)->data);
+        printf("\ndata of the last item : %s\n", (char*)ft_list_last(p)->data);
         printf("\nthe full list : \n");
         
         i = 0;
         while (p)
         {
-            printf("[%i] : %c\n", i, *(char*)p->data);
+            printf("[%i] : %s\n", i, (char*)p->data);
             p = p->next;
             i++;
         }
@@ -83,3 +82,5 @@ t_list  *ce(void *data)
         p->next = NULL;
         return  p;
 }
+
+*/

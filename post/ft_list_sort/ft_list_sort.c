@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_sort.c                                     :+:      :+:    :+:   */
+/*   _                                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 10:46:48 by nuxu              #+#    #+#             */
-/*   Updated: 2021/08/12 11:43:02 by nuxu             ###   ########.fr       */
+/*   Created: 2021/0_/__ __:__:__ by nxu               #+#    #+#             */
+/*   Updated: 2021/0_/__ __:__:__ by nxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,22 @@ int     main(int argc, char **argv)
         if (argc < 2)   return 0;
         p = pp(argc, argv);
         head = p;
+        printf("\nlist unsorted :\n------------\n");
         while (head)
         {
             printf("%s\n", (char *)head->data);
             head = head->next;
         }
+        printf("------------");
         ft_list_sort(&p, strcmp);
         head = p;
+        printf("\nlist sorted : \n------------\n");
         while (head)
         {
             printf("%s\n", (char*)head->data);
             head = head->next;
         }
+        printf("------------\n");
 }
 
 t_list  *pp(int n, char **s)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_params.c                              :+:      :+:    :+:   */
+/*   _                                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 10:46:48 by nuxu              #+#    #+#             */
-/*   Updated: 2021/08/12 11:43:02 by nuxu             ###   ########.fr       */
+/*   Created: 2021/0_/__ __:__:__ by nxu               #+#    #+#             */
+/*   Updated: 2021/0_/__ __:__:__ by nxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,16 @@ t_list  *ft_list_push_params(int ac, char **av)
         t_list      *p;
         int         i;
 
-        i = 2;
-        if (ac < i)
+        if (ac < 2)
             return (NULL);
-        if (ac == i)
-        {
-            p = ft_create_elem(av[1]);
-            return (p);
-        }
-        head = ft_create_elem(av[i++]);
+        i = ac - 1;
+        head = ft_create_elem(av[i--]);
         p = head;
-        while (i < ac)
+        while (i > 0)
         {
-            p->next = ft_create_elem(av[i]);
+            p->next = ft_create_elem(av[i--]);
             p = p->next;
-            i++;
         }
-        p->next = ft_create_elem(av[1]);
         return (head);
 }
 
@@ -61,14 +54,15 @@ t_list  *ft_create_elem(void *data)
 
 int     main(int argc, char **argv)
 {
-        (void)  argc;
         t_list  *p;
 
         p = ft_list_push_params(argc, argv);
+        printf("\nTotally inverted : \n\n");
         while (p)
         {
-                printf("%c\n", *(char*)p->data);
+                printf("%s\n", (char*)p->data);
                 p = p->next;
+                if (!p) printf("\n");
         }
 }
 

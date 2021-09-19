@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_find.c                                     :+:      :+:    :+:   */
+/*   _                                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 10:46:48 by nuxu              #+#    #+#             */
-/*   Updated: 2021/08/12 11:43:02 by nuxu             ###   ########.fr       */
+/*   Created: 2021/0_/__ __:__:__ by nxu               #+#    #+#             */
+/*   Updated: 2021/0_/__ __:__:__ by nxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ t_list  *ft_list_find(t_list *begin_list, void *data_ref, int (*cmp)())
         return (NULL);
 }
 
+/*
+
 // DRIVE
 
 #include    <string.h>
@@ -41,8 +43,12 @@ void    put_ptr(void *p);
 int     main(int argc, char **argv)
 {
         t_list      *list;
+        char        *word;
+
         list = pp(argc, argv);
-        put_ptr(ft_list_find(list, "abc", &strcmp));
+        word = "good";
+        printf("\nAddress of the first word \"%s\" :\n\n", word);
+        put_ptr(ft_list_find(list, word, &strcmp)); printf("\n");
 }
 
 t_list  *pp(int n, char **s)
@@ -77,4 +83,4 @@ void    put_ptr(void *p)
         printf("%p\n", p);
 }
 
-
+*/
