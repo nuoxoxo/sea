@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   _                                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 10:46:48 by nuxu              #+#    #+#             */
-/*   Updated: 2021/08/12 11:43:02 by nuxu             ###   ########.fr       */
+/*   Created: 2021/0_/__ __:__:__ by nxu               #+#    #+#             */
+/*   Updated: 2021/0_/__ __:__:__ by nxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,17 @@ int     main(int argc, char **argv)
         if (!(p = pp(argc, argv)))  return 0;
 
         i = 0;
-        printf("Before : \n\n");
+        printf("\nBefore : \n\n");
         
         while (p)
         {
-            printf("[%i] : %c\n", i, *(char*)p->data);
+            printf("[%i] : %s\n", i, (char*)p->data);
             p = p->next;
             i++;
         }
 
         ft_list_clear(&p);
-        printf("\nAfter : \n\n %p \n\n", p);
+        printf("\nAfter : %p\n\n", p);
 }
 
 t_list  *pp(int n, char **s)

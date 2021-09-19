@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_reverse_fun.c                              :+:      :+:    :+:   */
+/*   _                                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 10:46:48 by nuxu              #+#    #+#             */
-/*   Updated: 2021/08/12 11:43:02 by nuxu             ###   ########.fr       */
+/*   Created: 2021/0_/__ __:__:__ by nxu               #+#    #+#             */
+/*   Updated: 2021/0_/__ __:__:__ by nxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void    ft_list_reverse_fun(t_list *begin_list)
         {
             j = i;
             curr = begin_list;
-            while (j < size - 1 && curr && curr->next)
+            while (j < size - 1)
             {
                 temp = curr->data;
                 curr->data = curr->next->data;
@@ -44,6 +44,8 @@ void    ft_list_reverse_fun(t_list *begin_list)
 }
 
 /*
+
+//  omitted line : `while (j < size - 1 && curr && curr->next)`
 
 // DRIVE
 

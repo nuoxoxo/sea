@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_reverse.c                                  :+:      :+:    :+:   */
+/*   _                                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/11 10:46:48 by nuxu              #+#    #+#             */
-/*   Updated: 2021/08/12 11:43:02 by nuxu             ###   ########.fr       */
+/*   Created: 2021/0_/__ __:__:__ by nxu               #+#    #+#             */
+/*   Updated: 2021/0_/__ __:__:__ by nxu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void    ft_list_reverse(t_list **begin_list)
         *begin_list = p;
 }
 
+/*
+
 // DRIVE
 
 #include    <stdio.h>
@@ -53,7 +55,7 @@ int     main(int argc, char **argv)
         printf("\noriginal list \n\n");
         while (i < argc - 1)
         {
-            printf("[%i] : %c\n", i, *(char*)ptr1->data);
+            printf("[%i] : %s\n", i, (char*)ptr1->data);
             ptr1 = ptr1->next;
             i++;
         }
@@ -66,7 +68,7 @@ int     main(int argc, char **argv)
         printf("reversed list \n\n");
         while (ptr2)
         {
-            printf("[%i] : %c\n", i, *(char*)ptr2->data);
+            printf("[%i] : %s\n", i, (char*)ptr2->data);
             ptr2 = ptr2->next;
             i++;
         }
@@ -100,3 +102,5 @@ t_list  *ce(void *data)
         p->next = NULL;
         return (p);
 }
+
+*/
