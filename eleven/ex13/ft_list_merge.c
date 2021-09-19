@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_reverse.c                                  :+:      :+:    :+:   */
+/*   ft_list_merge.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,23 +13,13 @@
 #include    <stdlib.h>
 #include    "ft_list.h"
 
-void    ft_list_reverse(t_list **begin_list)
+void    ft_list_merge(t_list **begin_list1, t_list *begin_list2)
 {
-        t_list  *self;
-        t_list  *p;
-        t_list  *n;
+        t_list      *head;
 
-        self = *begin_list;
-        p = NULL;
-        n = NULL;
-        while (self)
-        {
-            n = self->next;
-            self->next = p;
-            p = self;
-            self = n;
-        }
-        *begin_list = p;
+        head = *begin_list1;
+        while (head->next)    head = head->next;
+        head->next = begin_list2;
 }
 
 /*
@@ -38,41 +28,45 @@ void    ft_list_reverse(t_list **begin_list)
 
 #include    <stdio.h>
 
-t_list  *pp(int n, char **s);
-t_list  *ce(void *d);
+t_list      *pp(int n, char **s);
+t_list      *ce(void *d);
+void        ft_list_merge(t_list **begin_list1, t_list *begin_list2);
 
 int     main(int argc, char **argv)
 {
-        t_list  *p;
-        t_list  *ptr1 = NULL;
-        t_list  *ptr2 = NULL;
-        int     i;
+        t_list      *p;
+        t_list      *list_1;
+        t_list      *list_2, *list_3;
         
-        p = pp(argc, argv);
-        ptr1 = p;
-        i = 0;
-
-        printf("\noriginal list \n\n");
-        while (i < argc - 1)
+        list_1 = pp(argc, argv);
+        list_2 = ce((char *)"hello world");
+        list_3 = ce((char *)"good music");
+        list_2->next = list_3;
+        
+        printf("\nHere is list 1 : \n");
+        p = list_1;
+        while (p)
         {
-            printf("[%i] : %s\n", i, (char*)ptr1->data);
-            ptr1 = ptr1->next;
-            i++;
-        }
-        printf("\n");
-
-        ft_list_reverse(&p);
-        ptr2 = p;
-        i = 0;
-
-        printf("reversed list \n\n");
-        while (ptr2)
+            printf("%s\n", (char*)p->data);
+            p = p->next;
+        }        
+        
+        printf("\nHere s list 2 : \n");
+        p = list_2;
+        while (p)
         {
-            printf("[%i] : %s\n", i, (char*)ptr2->data);
-            ptr2 = ptr2->next;
-            i++;
+            printf("%s\n", (char*)p->data);
+            p = p->next;
         }
-        printf("\n");
+        ft_list_merge(&list_1, list_2);
+
+        printf("\nLists 1 & 2 merged : \n");
+        p = list_1;
+        while (p)
+        {
+            printf("%s\n", (char*)p->data);
+            p = p->next;
+        }
 }
 
 t_list  *pp(int n, char **s)
@@ -82,7 +76,6 @@ t_list  *pp(int n, char **s)
 
         if (n < 2)  return NULL;
         head = ce(s[i++]);
-
         p = head;
         while (i < n)
         {
@@ -97,7 +90,7 @@ t_list  *ce(void *data)
         t_list  *p;
 
         p = malloc(sizeof(t_list));
-        if (!p) return (NULL);
+        if (!p) return NULL;
         p->data = data;
         p->next = NULL;
         return (p);

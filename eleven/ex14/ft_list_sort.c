@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_reverse.c                                  :+:      :+:    :+:   */
+/*   ft_list_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nuxu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,66 +13,57 @@
 #include    <stdlib.h>
 #include    "ft_list.h"
 
-void    ft_list_reverse(t_list **begin_list)
+void    ft_list_sort(t_list **begin_list, int (*cmp)())
 {
-        t_list  *self;
         t_list  *p;
-        t_list  *n;
+        void    *temp;
 
-        self = *begin_list;
-        p = NULL;
-        n = NULL;
-        while (self)
+        p = *begin_list;
+        while (p->next)
         {
-            n = self->next;
-            self->next = p;
-            p = self;
-            self = n;
+            if (cmp(p->data, p->next->data) > 0)
+            {
+                temp = p->data;
+                p->data = p->next->data;
+                p->next->data = temp;
+                p = *begin_list;
+            }
+            else
+                p = p->next;
         }
-        *begin_list = p;
 }
 
 /*
 
 // DRIVE
 
+#include    <string.h>
 #include    <stdio.h>
 
-t_list  *pp(int n, char **s);
-t_list  *ce(void *d);
+void        ft_list_sort(t_list **begin_list, int (*cmp)());
+t_list      *pp(int n, char **s);
+t_list      *ce(void *d);
 
 int     main(int argc, char **argv)
 {
-        t_list  *p;
-        t_list  *ptr1 = NULL;
-        t_list  *ptr2 = NULL;
-        int     i;
-        
+        t_list      *p;
+        t_list      *head;
+
+        if (argc < 2)   return 0;
         p = pp(argc, argv);
-        ptr1 = p;
-        i = 0;
-
-        printf("\noriginal list \n\n");
-        while (i < argc - 1)
+        head = p;
+        while (head)
         {
-            printf("[%i] : %s\n", i, (char*)ptr1->data);
-            ptr1 = ptr1->next;
-            i++;
+            printf("%s\n", (char *)head->data);
+            head = head->next;
         }
-        printf("\n");
-
-        ft_list_reverse(&p);
-        ptr2 = p;
-        i = 0;
-
-        printf("reversed list \n\n");
-        while (ptr2)
+        ft_list_sort(&p, strcmp);
+        head = p;
+        while (head)
         {
-            printf("[%i] : %s\n", i, (char*)ptr2->data);
-            ptr2 = ptr2->next;
-            i++;
+            printf("%s\n", (char*)head->data);
+            head = head->next;
         }
-        printf("\n");
 }
 
 t_list  *pp(int n, char **s)
@@ -82,7 +73,6 @@ t_list  *pp(int n, char **s)
 
         if (n < 2)  return NULL;
         head = ce(s[i++]);
-
         p = head;
         while (i < n)
         {
@@ -97,7 +87,7 @@ t_list  *ce(void *data)
         t_list  *p;
 
         p = malloc(sizeof(t_list));
-        if (!p) return (NULL);
+        if (!p) return NULL;
         p->data = data;
         p->next = NULL;
         return (p);
