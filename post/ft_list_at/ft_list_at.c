@@ -58,9 +58,15 @@ int     main(int argc, char **argv)
             i++;
         }
         i = 4;
-        printf("\nData at %i : %s", i, (char*)ft_list_at(head, i)->data);
+        p = ft_list_at(head, i);
+        printf("\n\nAddr at %i : %p", i, p);
+        if (p)  printf("\nData at %i : %s", i, (char*)p->data);
         i = 2;
-        printf("\nData at %i : %s\n\n", i, (char*)ft_list_at(head, i)->data);
+        p = ft_list_at(head, i);
+        printf("\n\nAddr at %i : %p", i, p);
+        if (p)  printf("\nData at %i : %s", i, (char*)p->data);
+
+        printf("\n\n\n");
 }
 
 t_list  *pp(int n, char **s)
