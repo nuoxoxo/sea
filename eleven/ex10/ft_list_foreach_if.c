@@ -26,7 +26,6 @@ void    ft_list_foreach_if \
         }
 }
 
-/*
 
 // DRIVE
 
@@ -79,4 +78,3 @@ void    pf(void *s)
         printf("%s\n", (char*)s);
 }
 
-*/
