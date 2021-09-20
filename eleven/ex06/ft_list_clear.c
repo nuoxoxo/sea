@@ -17,6 +17,8 @@ void    ft_list_clear(t_list **begin_list)
 {
         t_list  *ptr;
 
+        if (*begin_list)
+            return NULLl;
         while   (*begin_list)
         {
                 ptr = *begin_list;
@@ -25,7 +27,6 @@ void    ft_list_clear(t_list **begin_list)
         }
 }
 
-/*
 
 // DRIVE
 
@@ -84,4 +85,3 @@ t_list  *ce(void *data)
         return (p);
 }
 
-*/
