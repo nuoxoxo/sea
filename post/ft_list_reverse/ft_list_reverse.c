@@ -19,17 +19,20 @@ void    ft_list_reverse(t_list **begin_list)
         t_list  *p;
         t_list  *n;
 
-        self = *begin_list;
-        p = NULL;
-        n = NULL;
-        while (self)
+        if (*begin_list)
         {
-            n = self->next;
-            self->next = p;
-            p = self;
-            self = n;
+            self = *begin_list;
+            p = NULL;
+            n = NULL;
+            while (self)
+            {
+                n = self->next;
+                self->next = p;
+                p = self;
+                self = n;
+            }
+            *begin_list = p;
         }
-        *begin_list = p;
 }
 
 /*

@@ -19,6 +19,7 @@ void    ft_list_sort(t_list **begin_list, int (*cmp)())
         void    *temp;
 
         p = *begin_list;
+        if (!p) return ;
         while (p->next)
         {
             if (cmp(p->data, p->next->data) > 0)
@@ -49,7 +50,7 @@ int     main(int argc, char **argv)
         t_list      *p;
         t_list      *head;
 
-        if (argc < 2)   return 0;
+        //if (argc < 2)   return 0;
         p = pp(argc, argv);
         head = p;
         printf("\nlist unsorted :\n------------\n");
