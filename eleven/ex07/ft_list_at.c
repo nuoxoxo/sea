@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    <stdlib.h>
-#include    "ft_list.h"
+#include "ft_list.h"
 
 t_list  *ft_list_at(t_list *begin_list, unsigned int nbr)
 {
@@ -36,7 +35,7 @@ t_list  *ft_list_at(t_list *begin_list, unsigned int nbr)
 
 // DRIVE
 
-#include    <stdio.h>
+#include <stdio.h>
 
 t_list  *pp(int n, char **s);
 t_list  *ce(void *d);

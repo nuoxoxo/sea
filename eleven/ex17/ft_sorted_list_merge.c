@@ -76,7 +76,6 @@ int     main(int argc, char **argv)
 {
         t_list      *list_1;
         t_list      *list_2, *list_3, *list_4;
-        if (argc < 2)   return 0;
         
         list_1 = pp(argc, argv);
         list_2 = ce((char *)"xyzo hello world");

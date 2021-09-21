@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    <stdlib.h>
-#include    "ft_list.h"
+#include "ft_list.h"
 
 void    ft_list_sort(t_list **begin_list, int (*cmp)())
 {
@@ -34,22 +33,22 @@ void    ft_list_sort(t_list **begin_list, int (*cmp)())
         }
 }
 
+/*
 
 // DRIVE
 
-#include    <string.h>
-#include    <stdio.h>
+#include <string.h>
+#include <stdio.h>
 
-void        ft_list_sort(t_list **begin_list, int (*cmp)());
-t_list      *pp(int n, char **s);
-t_list      *ce(void *d);
+void    ft_list_sort(t_list **begin_list, int (*cmp)());
+t_list  *pp(int n, char **s);
+t_list  *ce(void *d);
 
 int     main(int argc, char **argv)
 {
         t_list      *p;
         t_list      *head;
 
-        //if (argc < 2)   return 0;
         p = pp(argc, argv);
         head = p;
         printf("\nlist unsorted :\n------------\n");
@@ -97,3 +96,4 @@ t_list  *ce(void *data)
         return (p);
 }
 
+*/

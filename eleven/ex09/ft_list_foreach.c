@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    <stdlib.h>
-#include    "ft_list.h"
+#include "ft_list.h"
 
 void    ft_list_foreach(t_list *begin_list, void (*f)(void *))
 {
@@ -29,7 +28,7 @@ void    ft_list_foreach(t_list *begin_list, void (*f)(void *))
 
 // DRIVE
 
-#include    <stdio.h>
+#include <stdio.h>
 
 t_list  *pp(int n, char **s);
 t_list  *ce(void *d);
