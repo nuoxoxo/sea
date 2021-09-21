@@ -10,27 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    <stdlib.h>
-#include    "ft_list.h"
+#include "ft_list.h"
 
 void    ft_list_clear(t_list **begin_list)
 {
         t_list  *ptr;
 
         if (*begin_list)
-            return NULLl;
+            return ;
         while   (*begin_list)
         {
-                ptr = *begin_list;
-                *begin_list = (*begin_list)->next;
-                free(ptr);
+            ptr = *begin_list;
+            *begin_list = (*begin_list)->next;
+            free(ptr);
         }
+        *begin_list = NULL;
 }
 
+/*
 
 // DRIVE
 
-#include    <stdio.h>
+#include <stdio.h>
 
 t_list  *pp(int n, char **s);
 t_list  *ce(void *d);
@@ -85,3 +86,4 @@ t_list  *ce(void *data)
         return (p);
 }
 
+*/
