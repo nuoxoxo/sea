@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    <stdlib.h>
-#include    "ft_list.h"
+#include "ft_list.h"
 
 void    ft_list_reverse_fun(t_list *begin_list)
 {
@@ -44,8 +43,6 @@ void    ft_list_reverse_fun(t_list *begin_list)
 }
 
 /*
-
-//  omitted line : `while (j < size - 1 && curr && curr->next)`
 
 // DRIVE
 
