@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    <stdlib.h>
+#include <stdlib.h>
 
 #ifndef FT_LIST_H
 #define FT_LIST_H
