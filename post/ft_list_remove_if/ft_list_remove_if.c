@@ -10,14 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    <stdlib.h>
-#include    "ft_list.h"
+#include "ft_list.h"
 
 void    ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 {
         t_list      *temp;
         t_list      *p;
- 
+
         while (*begin_list && !cmp((*begin_list)->data, data_ref))
         {
             temp = *begin_list;
@@ -33,16 +32,18 @@ void    ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
                 p->next = p->next->next;
                 free(temp);
             }
-            p = p->next;
+            else
+                p = p->next;
         }
+
 }
 
 /*
 
 // DRIVE
 
-#include    <string.h>
-#include    <stdio.h>
+#include <string.h>
+#include <stdio.h>
 
 void    ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)());
 void    put_list(t_list *list);
@@ -54,12 +55,15 @@ int     main(int argc, char **argv)
         t_list      *list;
         char        *word;
         
-        list = pp(argc, argv);  word = "abc";
-        printf("\nOriginal list : \n"); put_list(list);
+        list = pp(argc, argv);
+        word = "64";
+        printf("\nOriginal list : \n\n");
+        put_list(list);
         printf("\nNow remove : %s\n\n", word);
         printf("\nAfter removal : \n\n");
         ft_list_remove_if(&list, word, &strcmp);
-        put_list(list); printf("\n");
+        put_list(list);
+        printf("\n");
 }
 
 t_list  *pp(int n, char **s)
