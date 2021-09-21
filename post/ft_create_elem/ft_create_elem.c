@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "ft_list.h"
 
 t_list  *ft_create_elem(void *data)
@@ -44,12 +43,10 @@ int     main(int argc, char **argv)
 
         list = ft_create_elem(data);
         list_1 = ft_create_elem(&data_1);
-        //  '&' is not needed if type is 'char*'
         list_2 = ft_create_elem(&data_2);
         
         printf("list->data : %s (argv[1])\n", (char*)list->data);
         printf("list->data : %c (char)\n", *(char*)list_1->data);
-        //  only '*(char*)' works, '(char)lst->data' doesn't work
         printf("list->data : %i (int)\n", *(int*)list_2->data);
 }
 
