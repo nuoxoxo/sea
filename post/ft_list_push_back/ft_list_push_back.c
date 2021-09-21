@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "ft_list.h"
 
 t_list  *ce(void *d);
@@ -58,11 +57,11 @@ int     main(int argc, char **argv)
         ptr = NULL;
         ft_list_push_back(&ptr, data1);
         printf("\n%s\n", (char*)ptr->data);
-        printf("%p\n", ptr->next);
+        printf("%p <----- null\n", ptr->next);
 
         ft_list_push_back(&ptr, &data2);
         printf("\n%s\n", (char*)ptr->data);
-        printf("%i\n\n", *(int*)ptr->next->data);
+        printf("%i <----- this int is added here\n\n", *(int*)ptr->next->data);
 }
 
 */
