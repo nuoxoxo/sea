@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    <stdlib.h>
-#include    "ft_list.h"
+#include "ft_list.h"
 
 void    ft_list_foreach_if \
         (t_list *begin_list, void (*f)(void *), void *data_ref, int (*cmp)())
@@ -21,7 +20,8 @@ void    ft_list_foreach_if \
         p = begin_list;
         while (p)
         {
-            if (cmp(p->data, data_ref) == 0) f(p->data);
+            if (cmp(p->data, data_ref) == 0)
+                f(p->data);
             p = p->next;
         }
 }
@@ -30,8 +30,8 @@ void    ft_list_foreach_if \
 
 // DRIVE
 
-#include    <string.h>
-#include    <stdio.h>
+#include <string.h>
+#include <stdio.h>
 
 t_list  *pp(int n, char **s);
 t_list  *ce(void *d);
@@ -42,9 +42,13 @@ void    ft_list_foreach_if \
 int     main(int argc, char **argv)
 {
         t_list      *list;
+        char        *str;
+
+        str = "abc";
         list = pp(argc, argv);
         printf("\nApply &strcmp in foreach_if :\n\n");
-        ft_list_foreach_if(list, &pf, "abc", &strcmp);  printf("\n");
+        ft_list_foreach_if(list, &pf, str, &strcmp);
+        printf("\n");
 }
 
 t_list  *pp(int n, char **s)
