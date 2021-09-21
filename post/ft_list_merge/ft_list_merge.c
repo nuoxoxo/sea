@@ -10,22 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "ft_list.h"
 
 void    ft_list_merge(t_list **begin_list1, t_list *begin_list2)
 {
         t_list      *head;
 
-        if (*begin_list1 && !begin_list2)  return ;
-        if (!*begin_list1 && !begin_list2) return ;
+        if (!begin_list2)
+            return ;
         if (!*begin_list1 && begin_list2)
         {
             *begin_list1 = begin_list2;
             return ;
         }
         head = *begin_list1;
-        while (head->next)    head = head->next;
+        while (head->next)
+            head = head->next;
         head->next = begin_list2;
 }
 
@@ -44,7 +44,6 @@ int     main(int argc, char **argv)
 {
         t_list      *list_1;
         t_list      *list_2, *list_3, *empty;
-        if (argc < 2)   return 0;
         
         list_1 = pp(argc, argv);
         list_2 = ce((char *)"hello world");
