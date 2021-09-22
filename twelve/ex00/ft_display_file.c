@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_display_file.c                                  :+:      :+:    :+:   */
+/*   ft_display_file.c                  :D              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,23 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
 #include <unistd.h>
+#include <fcntl.h>
 
-int main(int argc, char **argv)
+int     len(char *s);
+void    msg(int n);
+
+int     main(int argc, char **argv)
 {
     char    *name;
     int     fd;
     char    c;
-
+    
     if (argc == 1)
     {
-        write(2, "File name missing.\n", 20);
+        msg(1);
         return (0);
     }
     if (argc > 2)
     {
-        write(2, "Too many arguments.\n", 21);
+        msg(2);
         return (0);
     }
     name = argv[1];
@@ -36,9 +39,7 @@ int main(int argc, char **argv)
         return (0);
     }
     while (read(fd, &c, 1))
-    {
         write(1, &c, 1);
-    }
     close(fd);
 }
 
@@ -52,3 +53,29 @@ int main(int argc, char **argv)
 // read(int fildes, void *buf, size_t count);
 // int open(const char *path, int flags ie. modes);
 // int close(int fd);
+
+void    msg(int n)
+{
+    char    *msg1, *msg2;
+    
+    msg1 = "File name missing.\n";
+    msg2 = "Too many argument.\n";
+    if (n == 1)
+    {
+        write(2, &msg1, len(msg1));
+        }
+    if (n == 2)
+    {
+        write(2, &msg2, len(msg2));
+    }
+}
+
+int     len(char *s)
+{
+    int i;
+
+    i = 0;
+    while (s[i])
+        i++;
+    return (i);
+}
