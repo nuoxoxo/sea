@@ -22,6 +22,7 @@ int     ft_atoi(char *s)
 {
     int sign = 1;
     int tt, i;
+    
     tt = i = 0;
     while (s[i] == ' ' || (s[i] < 14 && s[i] > 8))
         i++;
