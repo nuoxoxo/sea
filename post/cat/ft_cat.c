@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_display_file.c                  :D              :+:      :+:    :+:   */
+/*   ft_cat.c                          xD               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nxu <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,62 +12,72 @@
 
 #include <unistd.h>
 #include <fcntl.h>
+#include <errno.h>
 
+void    display_file(char *s);
+void    display_copy(void);
+void    msg(char *s, int n);
 int     len(char *s);
-void    msg(int n);
 
 int     main(int argc, char **argv)
 {
-    char    *name;
+    int     i;
+
+    if (argc == 1)
+        display_copy();
+    i = 1;
+    while (i < argc)
+    {
+        display_file(argv[i]);
+        i++;
+    }
+    return (0);
+}
+
+//
+
+void    display_file(char *filename)
+{
     int     fd;
     char    c;
     
-    if (argc == 1)
-    {
-        msg(1);
-        return (0);
-    }
-    if (argc > 2)
-    {
-        msg(2);
-        return (0);
-    }
-    name = argv[1];
-    fd = open(name, O_RDONLY);
+    fd = open(filename, O_RDWR);
     if (fd < 0)
     {
-        return (0);
+        msg(filename, errno);
+        return ;
     }
     while (read(fd, &c, 1))
         write(1, &c, 1);
     close(fd);
 }
 
-// open() returns a small, nonnegative integer
-// -1 if an error occurred
-
-// read() returns the number of bytes read on success
-// 0 at end of file
-// -1 on error, and errno is set appropriately
-
-// read(int fildes, void *buf, size_t count);
-// int open(const char *path, int flags ie. modes);
-// int close(int fd);
-
-void    msg(int n)
+void    display_copy(void)
 {
-    char    *msg1, *msg2;
+    char    c;
+
+    while (read(STDIN_FILENO, &c, 1))
+        write(1, &c, 1);
+}
+
+void    msg(char *arg, int n)
+{
+    char    *msg_not_found;
+    char    *msg_try_again;
+    char    *msg_directory;
     
-    msg1 = "File name missing.\n";
-    msg2 = "Too many argument.\n";
-    if (n == 1)
-    {
-        write(2, &msg1, len(msg1));
-        }
+    msg_not_found = "No such file or directory\n";
+    msg_directory = "Is a directory\n";
+    msg_try_again = "Try again\n";
+    write(2, "cat: ", 5);
+    write(2, arg, len(arg));
+    write(2, ": ", 2);
     if (n == 2)
-    {
-        write(2, &msg2, len(msg2));
-    }
+        write(2, msg_not_found, len(msg_not_found));
+    else if (n == 21)
+        write(2, msg_directory, len(msg_directory));
+    else
+        write(2, msg_try_again, len(msg_try_again));
 }
 
 int     len(char *s)
