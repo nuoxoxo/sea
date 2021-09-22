@@ -23,20 +23,18 @@ void    ft_sorted_list_merge(t_list **begin_list1, \
         list_sort(begin_list1, cmp);
 }
 
-
 void    list_merge(t_list **begin_list1, t_list *begin_list2)
 {
         t_list      *head;
 
-        if (*begin_list1 && !begin_list2)  return ;
-        if (!*begin_list1 && !begin_list2) return ;
+        if (!begin_list2)   return ;
         if (!*begin_list1 && begin_list2)
         {
             *begin_list1 = begin_list2;
             return ;
         }
         head = *begin_list1;
-        while (head->next)    head = head->next;
+        while (head->next)  head = head->next;
         head->next = begin_list2;
 }
 
@@ -61,7 +59,7 @@ void    list_sort(t_list **begin_list, int (*cmp)())
         }
 }
 
-/*
+
 
 // DRIVE
 
@@ -75,14 +73,18 @@ void    list_print(t_list *p);
 int     main(int argc, char **argv)
 {
         t_list      *list_1;
-        t_list      *list_2, *list_3, *list_4;
+        t_list      *list_2, *list_3, *list_4, *list_5, *list_6;
         
         list_1 = pp(argc, argv);
-        list_2 = ce((char *)"xyzo hello world");
-        list_3 = ce((char *)"abba good music");
-        list_4 = ce((char *)"1024");
+        list_2 = ce((char *)"hello, world!");
+        list_3 = ce((char *)"1024");
+        list_4 = ce((char *)"Good morning.");
+        list_5 = ce((char *)"+ (plus sign)");
+        list_6 = ce((char *)"  (space)");
         list_2->next = list_3;
         list_3->next = list_4;
+        list_4->next = list_5;
+        list_5->next = list_6;
         
         printf("\n\n- Here is list 1 : \n");
         list_print(list_1);
@@ -131,4 +133,4 @@ void    list_print(t_list *p)
         printf("\n");
 }
 
-*/
+
