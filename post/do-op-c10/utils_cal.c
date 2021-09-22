@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include    "ft_utils.h"
-#include    "ft_opp.h"
+#include "ft_utils.h"
+#include "ft_opp.h"
 
 void    calc(int L, int R, char *c)
 {
