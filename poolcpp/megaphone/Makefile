@@ -5,3 +5,4 @@ $(NAME)	:
 		@$(CC) $(SRCS) -o $(NAME)
 clean	:
 		@rm -f $(NAME)
+.PHONY	:	clean
