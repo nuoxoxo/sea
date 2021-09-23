@@ -8,3 +8,4 @@ do-op	:
 all	:	@$(NAME)
 clean	:	
 		@$(RM) $(NAME)
+.PHONY	:	all clean
