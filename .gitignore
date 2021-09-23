@@ -1,3 +1,6 @@
+*
+!/**/
+!*.*
 .DS_Store
 Thumbs.db
 *.out
@@ -6,4 +9,4 @@ Thumbs.db
 *.txt
 reload/**/includes/
 reload/**/srcs/
-test
+test.*
