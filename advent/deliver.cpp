@@ -25,9 +25,8 @@ int     main()
 {
     std::vector< std::pair <int, int> > path_santa;
     std::vector< std::pair <int, int> > path_claus;
-    char                                buff;
-    int                                 mark, step;
-    int                                 x, y, a, b, c, d;
+    int     step, x, y, a, b, c, d;
+    char    buff;
 
     step = x = y = 0;
     a = b = 0;
@@ -60,17 +59,19 @@ int     main()
             if (step % 2)   b--;
             else            d--;
         }
+
         std::pair<int, int> pos_santa = std::make_pair(x, y);
-        mark = if_exists(pos_santa, path_santa);
-        if (!mark)   path_santa.push_back(pos_santa);
+        if (!if_exists(pos_santa, path_santa))
+            path_santa.push_back(pos_santa);
 
         std::pair<int, int> pos_nick = std::make_pair(a, b);
-        mark = if_exists(pos_nick, path_claus);
-        if (!mark)  path_claus.push_back(pos_nick);
+        if (!if_exists(pos_nick, path_claus))
+            path_claus.push_back(pos_nick);
 
         std::pair<int, int> pos_robo = std::make_pair(c, d);
-        mark = if_exists(pos_robo, path_claus);
-        if (!mark)  path_claus.push_back(pos_robo);
+        if (!if_exists(pos_robo, path_claus))
+            path_claus.push_back(pos_robo);
+
         step++;
     }
     std::cout << path_santa.size() << '\n';

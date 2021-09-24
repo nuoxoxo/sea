@@ -19,11 +19,11 @@ std::vector<int> parseSides(std::string s);
 
 int     main()
 {
-    int             ribbon = 0;
-    int             paper = 0;
-    int             minPerim;
-    int             minSlack;
-    std::string     s;
+    int ribbon = 0;
+    int paper = 0;
+    int minPerim;
+    int minSlack;
+    std::string s;
 
     while (std::cin >> s)
     {
@@ -31,6 +31,7 @@ int     main()
         int total = 0;
         int i = 0;
         int j;
+
         minPerim = arr[0] * 2 + arr[1] * 2;
         minSlack = arr[0] * arr[1];
         while (i < (int) arr.size() - 1)
@@ -40,6 +41,7 @@ int     main()
             {
                 int perim = arr[i] * 2 + arr[j] * 2;
                 int slack = arr[i] * arr[j];
+
                 if (minSlack > slack)
                     minSlack = slack;
                 if (minPerim > perim)
@@ -49,12 +51,9 @@ int     main()
             }
             i++;
         }
-
         ribbon += arr[0] * arr[1] * arr[2] + minPerim;
-
         total += minSlack;
-        paper += total;
-        
+        paper += total; 
     }    
 
     std::cout
@@ -66,9 +65,9 @@ int     main()
 
 std::vector<int> parseSides(std::string s)
 {
-    std::stringstream  ss(s);
+    std::stringstream   ss(s);
     std::vector<int>    arr;
-    int                 val;
+    int val;
 
     while (ss >> val)
     {
