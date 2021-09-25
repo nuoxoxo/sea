@@ -12,40 +12,50 @@
 
 #include <unistd.h>
 
-/*
+int     len(char *s);
 
 void    msg(char *arg, int n)
 {
-    char    *msg_no_flag;
-    char    *msg_no_file;
+    char    *msg_illegal_offset, *msg_illegal_option;
+    char    *msg_option_require, *msg_file, *msg_usage;
 
     msg_file = "No such file or directory\n";
     msg_usage = "usage: tail [-c #] [file ...]\n";
-    msg_offset = "tail: illegal offset -- ";
-    msg_option = "tail: option requires an argument -- "
+    msg_illegal_offset = "tail: illegal offset -- ";
+    msg_illegal_option = "tail: illegal option -- ";
+    msg_option_require = "tail: option requires an argument -- ";
 
     if (n == 0)
     {
-        write(2, "tail: " 6);
+        write(2, "tail: ", 6);
         write(2, arg, len(arg));
         write(2, ": ", 2);
-        write(2, msg_file, len(msg_file))
+        write(2, msg_file, len(msg_file));
     }
     else if (n == 1)
     {
-        write(2, msg_option, len(msg_option));
-        write(2, arg, 1);
+        write(2, msg_illegal_option, len(msg_illegal_option));
+        write(2, &arg[1], 1);
         write(2, "\n", 1);
         write(2, msg_usage, len(msg_usage));
     }
     else if (n == 2)
     {
-        write(2, msg_offset, len(msg_offset));
+        write(2, msg_option_require, len(msg_option_require));
+        write(2, &arg[1], 1);
+        write(2, "\n", 1);
+        write(2, msg_usage, len(msg_usage));
+    }
+    else if (n == 3)
+    {
+        write(2, msg_illegal_offset, len(msg_illegal_offset));
         write(2, arg, len(arg));
         write(2, "\n", 1);
     }
 
 }
+
+/*
 
 int     atoi_easy(char *s)
 {

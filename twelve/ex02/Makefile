@@ -1,6 +1,5 @@
 NAME	:=	ft_tail
 SRCS	:=	${wildcard *.c}
-#SRCS	:=	ft_tail.c
 CC	:=	gcc -Wall -Werror -Wextra -I .
 
 all	:	$(NAME)
