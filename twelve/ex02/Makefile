@@ -1,12 +1,10 @@
 NAME	:=	ft_tail
 SRCS	:=	${wildcard *.c}
 CC	:=	gcc -Wall -Werror -Wextra -I .
-
-all	:	$(NAME)
 $(NAME)	:
 		@$(CC) $(SRCS) -o $(NAME)
-#run	:
-#		./$(NAME)
+
+all	:	$(NAME)
 clean	:
 		@rm -f $(NAME)
 fclean	:	clean
