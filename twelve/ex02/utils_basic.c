@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int     len(char *s);
+#include <utils.h>
 
 void    msg(char *arg, int n)
 {
@@ -24,7 +22,6 @@ void    msg(char *arg, int n)
     msg_illegal_offset = "tail: illegal offset -- ";
     msg_illegal_option = "tail: illegal option -- ";
     msg_option_require = "tail: option requires an argument -- ";
-
     if (n == 0)
     {
         write(2, "tail: ", 6);
@@ -52,7 +49,6 @@ void    msg(char *arg, int n)
         write(2, arg, len(arg));
         write(2, "\n", 1);
     }
-
 }
 
 int     atoi_easy(char *s)
@@ -80,7 +76,6 @@ int     atoi_easy(char *s)
     }
     return (sign * tt);
 }
-
 
 int     len(char *s)
 {
