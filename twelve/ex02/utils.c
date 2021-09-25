@@ -55,8 +55,6 @@ void    msg(char *arg, int n)
 
 }
 
-/*
-
 int     atoi_easy(char *s)
 {
     int     sign;
@@ -83,7 +81,6 @@ int     atoi_easy(char *s)
     return (sign * tt);
 }
 
-*/
 
 int     len(char *s)
 {
